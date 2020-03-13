@@ -1,0 +1,11 @@
+name = "arkgo"
+mode = "develop"
+
+[http]
+port = 80
+domain = "dev.com"
+
+
+[site.www]
+name    = "主站"
+
