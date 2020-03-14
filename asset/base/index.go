@@ -6,6 +6,11 @@ import (
 
 const (
 	DB = "db"
+
+	REMOVED = "removed"
+
+	USER_PLATFORM = "platform"
+	USER_CUSTOMER = "customer"
 )
 
 var (
