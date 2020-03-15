@@ -16,7 +16,7 @@ func init() {
 			ctx.Next()
 
 			logger := true
-			if vv, ok := ctx.Config["logger"].(bool); ok {
+			if vv, ok := ctx.Setting["logger"].(bool); ok {
 				logger = vv
 			}
 

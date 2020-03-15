@@ -11,11 +11,11 @@ var (
 
 func init() {
 
-	test.Method("GetMsg", Map{
-		"name": "测试", "text": "测试",
-		"action": func(ctx *ark.Service) Map {
+	test.Register("GetMsg", ark.Method{
+		Name: "测试", Desc: "测试",
+		Action: func(ctx *ark.Service) Map {
 			return Map{
-				"msg": "msg from test library",
+				"msg":     "msg from test library",
 				"setting": ctx.Setting,
 			}
 		},

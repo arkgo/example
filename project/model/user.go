@@ -4,7 +4,6 @@ import (
 	"time"
 
 	"github.com/arkgo/ark"
-	. "github.com/arkgo/base"
 	. "github.com/arkgo/example/asset/base"
 )
 
