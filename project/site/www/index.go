@@ -12,7 +12,7 @@ func init() {
 		Uri:  "/",
 		Name: "首页", Desc: "首页",
 		Auth: ark.Auth{
-			"user": ark.Sign{Sign: "user", Require: true, Name: "用户"},
+			"user": ark.Sign{Require: true, Name: "用户"},
 		},
 		Action: func(ctx *ark.Http) {
 			ctx.Text("hello arkgo 111")
@@ -21,7 +21,7 @@ func init() {
 
 	Www.Register("login", ark.Router{
 		Uri: "/login",
-		Routing: ark.Routing{
+		Method: ark.Routing{
 			"get": ark.Router{
 				Name: "查询登录信息", Desc: "查询登录信息",
 				Action: func(ctx *ark.Http) {
@@ -44,7 +44,7 @@ func init() {
 
 	Www.Register("logout", ark.Router{
 		Uri: "/logout",
-		Routing: ark.Routing{
+		Method: ark.Routing{
 			"post": ark.Router{
 				Name: "用户登出", Desc: "用户登出",
 				Args: ark.Params{
@@ -64,7 +64,7 @@ func init() {
 		Item: ark.Item{
 			"user": ark.Entity{Require: true, Base: DB, Table: "user", Name: "用户"},
 		},
-		Routing: ark.Routing{
+		Method: ark.Routing{
 			"get": ark.Router{
 				Name: "查看用户信息", Desc: "查看用户信息",
 				Action: func(ctx *ark.Http) {
