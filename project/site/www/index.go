@@ -34,7 +34,7 @@ func init() {
 					"mobile":   ark.Param{Type: "mobile", Require: true, Name: "手机号"},
 					"password": ark.Param{Type: "hash", Require: true, Name: "密码"},
 				},
-				Action: func(ctx *ark.Http) {
+				Action: func(ctx *ark.WebCtx) {
 					ctx.Signin("user", 123, "哈哈哈")
 					ctx.Answer(nil, ctx.Args)
 				},
@@ -47,13 +47,9 @@ func init() {
 		Method: ark.Routing{
 			"post": ark.Router{
 				Name: "用户登出", Desc: "用户登出",
-				Args: ark.Params{
-					"mobile":   ark.Param{Type: "mobile", Require: true, Name: "手机号"},
-					"password": ark.Param{Type: "hash", Require: true, Name: "密码"},
-				},
 				Action: func(ctx *ark.Http) {
-					ctx.Signin("user", 123, "哈哈哈")
-					ctx.Answer(nil, ctx.Args)
+					ctx.Signou("user")
+					ctx.Answer(ark.OK)
 				},
 			},
 		},
