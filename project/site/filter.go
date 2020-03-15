@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/arkgo/ark"
+	. "github.com/arkgo/example/asset/base"
 )
 
 func init() {
@@ -22,6 +23,16 @@ func init() {
 
 			if logger {
 				ark.Trace(ctx.Ip(), ctx.Id, ctx.Method, ctx.Site, ctx.Uri, ctx.Code, time.Now().Sub(begin))
+			}
+		},
+	})
+
+	Www.Register("failed", ark.FailedHandler{
+		Action: func(ctx *ark.Http) {
+			if res := ctx.Result(); res != nil {
+				ctx.Answer(res)
+			} else {
+				ctx.Answer(ark.Fail)
 			}
 		},
 	})

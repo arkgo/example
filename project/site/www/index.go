@@ -2,6 +2,7 @@ package www
 
 import (
 	"github.com/arkgo/ark"
+	. "github.com/arkgo/base"
 	. "github.com/arkgo/example/asset/base"
 )
 
@@ -10,8 +11,11 @@ func init() {
 	Www.Register("index", ark.Router{
 		Uri:  "/",
 		Name: "首页", Desc: "首页",
+		Auth: ark.Auth{
+			"user": ark.Sign{Sign: "user", Require: true, Name: "用户"},
+		},
 		Action: func(ctx *ark.Http) {
-			ctx.Text("hello arkgo")
+			ctx.Text("hello arkgo 111")
 		},
 	})
 
@@ -21,13 +25,54 @@ func init() {
 			"get": ark.Router{
 				Name: "查询登录信息", Desc: "查询登录信息",
 				Action: func(ctx *ark.Http) {
-					ctx.Text("hello arkgo")
+					ctx.Text("hello login")
 				},
 			},
 			"post": ark.Router{
 				Name: "用户登录", Desc: "用户登录",
+				Args: ark.Params{
+					"mobile":   ark.Param{Type: "mobile", Require: true, Name: "手机号"},
+					"password": ark.Param{Type: "hash", Require: true, Name: "密码"},
+				},
 				Action: func(ctx *ark.Http) {
-					ctx.Text("hello arkgo")
+					ctx.Signin("user", 123, "哈哈哈")
+					ctx.Answer(nil, ctx.Args)
+				},
+			},
+		},
+	})
+
+	Www.Register("logout", ark.Router{
+		Uri: "/logout",
+		Routing: ark.Routing{
+			"post": ark.Router{
+				Name: "用户登出", Desc: "用户登出",
+				Args: ark.Params{
+					"mobile":   ark.Param{Type: "mobile", Require: true, Name: "手机号"},
+					"password": ark.Param{Type: "hash", Require: true, Name: "密码"},
+				},
+				Action: func(ctx *ark.Http) {
+					ctx.Signin("user", 123, "哈哈哈")
+					ctx.Answer(nil, ctx.Args)
+				},
+			},
+		},
+	})
+
+	Www.Register("view", ark.Router{
+		Uri: "/view/{id}",
+		Item: ark.Item{
+			"user": ark.Entity{Require: true, Base: DB, Table: "user", Name: "用户"},
+		},
+		Routing: ark.Routing{
+			"get": ark.Router{
+				Name: "查看用户信息", Desc: "查看用户信息",
+				Action: func(ctx *ark.Http) {
+					var item Map
+					if vv, ok := ctx.Item["user"].(Map); ok {
+						item = vv
+					}
+					ctx.Answer(nil, item)
 				},
 			},
 		},
