@@ -8,5 +8,8 @@ domain = "dev.com"
 
 [site.www]
 name    = "主站"
+
+[site.api]
+name    = "接口"
 crypto  = "text"
 

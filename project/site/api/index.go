@@ -1,4 +1,4 @@
-package www
+package api
 
 import (
 	"github.com/arkgo/ark"
@@ -8,15 +8,15 @@ import (
 
 func init() {
 
-	Www.Register("index", ark.Router{
+	Api.Register("index", ark.Router{
 		Uri:  "/",
 		Name: "首页", Desc: "首页",
 		Action: func(ctx *ark.Http) {
-			ctx.Text("hello arkgo www")
+			ctx.Text("hello arkgo api")
 		},
 	})
 
-	Www.Register("login", ark.Router{
+	Api.Register("login", ark.Router{
 		Uri: "/login",
 		Method: ark.Routing{
 			"get": ark.Router{
@@ -39,7 +39,7 @@ func init() {
 		},
 	})
 
-	Www.Register("logout", ark.Router{
+	Api.Register("logout", ark.Router{
 		Uri: "/logout",
 		Method: ark.Routing{
 			"post": ark.Router{
@@ -52,7 +52,7 @@ func init() {
 		},
 	})
 
-	Www.Register("view", ark.Router{
+	Api.Register("view", ark.Router{
 		Uri: "/view/{id}",
 		Item: ark.Item{
 			"user": ark.Entity{Require: true, Base: DB, Table: "user", Name: "用户"},

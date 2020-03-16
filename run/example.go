@@ -9,6 +9,7 @@ import (
 	_ "github.com/arkgo/example/project/model"
 	_ "github.com/arkgo/example/project/model/user"
 	_ "github.com/arkgo/example/project/site"
+	_ "github.com/arkgo/example/project/site/api"
 	_ "github.com/arkgo/example/project/site/www"
 )
 

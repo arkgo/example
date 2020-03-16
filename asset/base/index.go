@@ -14,5 +14,7 @@ const (
 )
 
 var (
-	Www = ark.Site("www")
+	Www  = ark.Site("www")
+	File = ark.Site("file")
+	Api  = ark.Site("api")
 )
