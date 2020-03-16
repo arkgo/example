@@ -2,7 +2,7 @@ package test
 
 import (
 	"github.com/arkgo/ark"
-	. "github.com/arkgo/base"
+	. "github.com/arkgo/asset"
 )
 
 var (

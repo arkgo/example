@@ -2,7 +2,7 @@ package www
 
 import (
 	"github.com/arkgo/ark"
-	. "github.com/arkgo/base"
+	. "github.com/arkgo/asset"
 	. "github.com/arkgo/example/asset/base"
 )
 
