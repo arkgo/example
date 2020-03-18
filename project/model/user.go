@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/arkgo/ark"
+	. "github.com/arkgo/asset"
 	. "github.com/arkgo/example/asset/base"
 )
 
@@ -11,39 +12,39 @@ func init() {
 
 	ark.Register("user", ark.Table{
 		Name: "用户", Desc: "用户",
-		Fields: ark.Params{
-			"id": ark.Param{
+		Fields: Vars{
+			"id": Var{
 				Type: "id", Require: false, Name: "编号",
 			},
-			"type": ark.Param{
+			"type": Var{
 				Type: "enum", Require: true, Name: "类型", Default: USER_CUSTOMER,
-				Option: ark.Option{
+				Option: Map{
 					USER_PLATFORM: "平台",
 					USER_CUSTOMER: "客户",
 				},
 			},
 
-			"name": ark.Param{
+			"name": Var{
 				Type: "string", Require: true, Name: "昵称",
 			},
 
-			"setting": ark.Param{
+			"setting": Var{
 				Type: "json", Require: true, Name: "类型",
-				Children: ark.Params{
-					"showad": ark.Param{Type: "bool", Require: true, Name: "是否显示广告", Default: false},
+				Children: Vars{
+					"showad": Var{Type: "bool", Require: true, Name: "是否显示广告", Default: false},
 				},
 			},
 
-			"status": ark.Param{
+			"status": Var{
 				Type: "enum", Require: false, Name: "状态",
-				Option: ark.Option{
+				Option: Map{
 					REMOVED: "已删除",
 				},
 			},
-			"changed": ark.Param{
+			"changed": Var{
 				Type: "datetime", Require: true, Name: "修改时间", Default: time.Now,
 			},
-			"created": ark.Param{
+			"created": Var{
 				Type: "datetime", Require: true, Name: "创建时间", Default: time.Now,
 			},
 		},
@@ -51,18 +52,18 @@ func init() {
 
 	ark.Register("user.search", ark.View{
 		Name: "用户搜索视图", Desc: "用户搜索视图",
-		Fields: ark.Params{
-			"id": ark.Param{
+		Fields: Vars{
+			"id": Var{
 				Type: "id", Require: false, Name: "编号",
 			},
-			"type": ark.Param{
+			"type": Var{
 				Type: "enum", Require: true, Name: "类型", Default: USER_CUSTOMER,
-				Option: ark.Option{
+				Option: Map{
 					USER_PLATFORM: "平台",
 					USER_CUSTOMER: "客户",
 				},
 			},
-			"name": ark.Param{
+			"name": Var{
 				Type: "string", Require: true, Name: "昵称",
 			},
 		},
@@ -70,11 +71,11 @@ func init() {
 
 	ark.Register("user.test", ark.Model{
 		Name: "用户测试模型", Desc: "用户测试模型",
-		Fields: ark.Params{
-			"name": ark.Param{
+		Fields: Vars{
+			"name": Var{
 				Type: "string", Require: true, Name: "名称",
 			},
-			"remark": ark.Param{
+			"remark": Var{
 				Type: "string", Require: false, Name: "备注",
 			},
 		},

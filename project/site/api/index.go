@@ -27,9 +27,9 @@ func init() {
 			},
 			"post": ark.Router{
 				Name: "用户登录", Desc: "用户登录",
-				Args: ark.Params{
-					"mobile":   ark.Param{Type: "mobile", Require: true, Name: "手机号"},
-					"password": ark.Param{Type: "hash", Require: true, Name: "密码"},
+				Args: Vars{
+					"mobile":   Var{Type: "mobile", Require: true, Name: "手机号"},
+					"password": Var{Type: "hash", Require: true, Name: "密码"},
 				},
 				Action: func(ctx *ark.Http) {
 					ctx.Signin("user", 123, "哈哈哈")
