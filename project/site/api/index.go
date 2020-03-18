@@ -18,7 +18,7 @@ func init() {
 
 	Api.Register("login", ark.Router{
 		Uri: "/login",
-		Method: ark.Routing{
+		Routing: ark.Routing{
 			"get": ark.Router{
 				Name: "查询登录信息", Desc: "查询登录信息",
 				Action: func(ctx *ark.Http) {
@@ -41,7 +41,7 @@ func init() {
 
 	Api.Register("logout", ark.Router{
 		Uri: "/logout",
-		Method: ark.Routing{
+		Routing: ark.Routing{
 			"post": ark.Router{
 				Name: "用户登出", Desc: "用户登出",
 				Action: func(ctx *ark.Http) {
@@ -57,7 +57,7 @@ func init() {
 		Item: ark.Item{
 			"user": ark.Entity{Require: true, Base: DB, Table: "user", Name: "用户"},
 		},
-		Method: ark.Routing{
+		Routing: ark.Routing{
 			"get": ark.Router{
 				Name: "查看用户信息", Desc: "查看用户信息",
 				Action: func(ctx *ark.Http) {
