@@ -28,8 +28,8 @@ func init() {
 			"post": ark.Router{
 				Name: "用户登录", Desc: "用户登录",
 				Args: Vars{
-					"mobile":   Var{Type: "mobile", Require: true, Name: "手机号"},
-					"password": Var{Type: "hash", Require: true, Name: "密码"},
+					"mobile":   Var{Type: "mobile", Required: true, Name: "手机号"},
+					"password": Var{Type: "hash", Required: true, Name: "密码"},
 				},
 				Action: func(ctx *ark.Http) {
 					ctx.Signin("user", 123, "哈哈哈")
@@ -55,7 +55,7 @@ func init() {
 	Api.Register("view", ark.Router{
 		Uri: "/view/{id}",
 		Item: ark.Item{
-			"user": ark.Entity{Require: true, Base: DB, Table: "user", Name: "用户"},
+			"user": ark.Entity{Required: true, Base: DB, Table: "user", Name: "用户"},
 		},
 		Routing: ark.Routing{
 			"get": ark.Router{
